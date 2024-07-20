@@ -1,8 +1,9 @@
-import express, { Request, Response, NextFunction } from "express";
+import express, {Request, Response, NextFunction} from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import UserRouter from "./api/routes/user_route"
+import TodoRouter from "./api/routes/todo_route"
 
 dotenv.config();
 
@@ -11,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -32,8 +33,8 @@ app.use("/check", (req: Request, res: Response) => {
     });
 });
 
- app.use("/users", UserRouter);
-// app.use("/todo", TodoRouter);
+app.use("/users", UserRouter);
+app.use("/todo", TodoRouter);
 // app.use("/auth", TokenRoute);
 //
 // app.use("/stripe", StripeRouter);
