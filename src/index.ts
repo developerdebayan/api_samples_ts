@@ -47,7 +47,7 @@ const swaggerOptions: swaggerJsdoc.Options = {
         },
         servers: [
             {
-                url: 'http://localhost:4000', // Change to your API base URL
+                url: 'https://api-samples-ts.onrender.com/', // Change to your API base URL
                 description: 'Development server',
             },
         ],
