@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import UserRouter from "./api/my_todo/routes/user_route"
 import TodoRouter from "./api/my_todo/routes/todo_route"
+import swaggerJsdoc from "swagger-jsdoc";
+
+import swaggerUi from 'swagger-ui-express';
 
 dotenv.config();
 
@@ -27,11 +30,43 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
+/**
+ * @swagger
+ * /:
+ * get:
+ *      summwry : Th
+ */
 app.use("/check", (req: Request, res: Response) => {
     res.status(200).json({
         status: 1,
     });
 });
+
+const swaggerOptions: swaggerJsdoc.Options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'My Todo',
+            version: '1.0.0',
+            description: 'API documentation for your project',
+        },
+        servers: [
+            {
+                url: 'http://localhost:4000', // Change to your API base URL
+                description: 'Development server',
+            },
+        ],
+    },
+    // Path to the API docs
+    apis: ['./index.ts'], // Adjust this path according to where your route files are
+};
+
+
+// Initialize swagger-jsdoc
+const specs = swaggerJsdoc(swaggerOptions);
+
+// Serve swagger docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use("/users", UserRouter);
 app.use("/todo", TodoRouter);
