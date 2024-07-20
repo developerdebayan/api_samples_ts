@@ -30,12 +30,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
-/**
- * @swagger
- * /:
- * get:
- *      summwry : Th
- */
+
 app.use("/check", (req: Request, res: Response) => {
     res.status(200).json({
         status: 1,
@@ -58,7 +53,7 @@ const swaggerOptions: swaggerJsdoc.Options = {
         ],
     },
     // Path to the API docs
-    apis: ['./index.ts'], // Adjust this path according to where your route files are
+    apis: ['./src/api/my_todo/routes/*.ts'], // Adjust this path according to where your route files are
 };
 
 
