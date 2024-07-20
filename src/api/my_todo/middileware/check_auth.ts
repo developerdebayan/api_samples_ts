@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { ObjectId } from 'mongodb';
-import UserModel from '../../models/User';
+import UserModel from '../../../models/User';
 
 // Extend Express Request interface
 declare global {

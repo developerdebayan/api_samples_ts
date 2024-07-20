@@ -2,8 +2,8 @@ import express, {Request, Response, NextFunction} from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import UserRouter from "./api/routes/user_route"
-import TodoRouter from "./api/routes/todo_route"
+import UserRouter from "./api/my_todo/routes/user_route"
+import TodoRouter from "./api/my_todo/routes/todo_route"
 
 dotenv.config();
 

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { ObjectId } from "mongodb";
-import User from "../../models/User";
-import Todo from "../../models/Todo";
+import User from "../../../models/User";
+import Todo from "../../../models/Todo";
 
 
 // Get the list of todos for a user

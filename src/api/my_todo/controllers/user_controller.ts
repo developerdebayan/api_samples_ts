@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import User from "../../models/User";
+import User from "../../../models/User";
 
 
 interface JwtPayload {
@@ -12,7 +12,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     try {
         let existingUser = await User.findOne({ email: email, password: password });
         if (existingUser != null) {
-            const token = jwt.sign({ id: existingUser.id }, "secret", { expiresIn: 60 });
+            const token = jwt.sign({ id: existingUser.id }, "secret", { expiresIn: '1h' });
             return res.status(200).json({
                 statusCode: 200,
                 message: "Login Successful",
@@ -57,7 +57,7 @@ export const register = async (req: Request, res: Response): Promise<Response> =
                 password: password
             });
             user = await user.save();
-            const token = jwt.sign({ id: user.id }, "secret", { expiresIn: 60 });
+            const token = jwt.sign({ id: user.id }, "secret", { expiresIn: '1h' });
             return res.status(201).json({
                 statusCode: 201,
                 status: 1,
