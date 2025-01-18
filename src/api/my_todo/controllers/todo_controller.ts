@@ -59,7 +59,13 @@ export const todoDetails = async (
         statusCode: 200,
         status: 1,
         message: "",
-        data: data,
+        data: {
+          _id: data?._id,
+          title: data?.title,
+          description: data?.description,
+          dateTime: data?.dateTime,
+          priority: data?.priority,
+        },
       });
     } else {
       return res.status(200).json({
